@@ -1,0 +1,30 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  .quiz-container {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    width: 100%;
+  }
+  .btn-custom {
+    background-color: #148791;
+    color: #fff;
+    border: none;
+    transition: background-color 0.3s ease;
+  }
+  .btn-custom:hover {
+    background-color: #0e5d5d;
+  }
+  .score {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }

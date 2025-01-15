@@ -5,119 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Quiz Web App</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-  <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0;
-    }
-    .quiz-container {
-      background: #ffffff;
-      padding: 30px;
-      border-radius: 15px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      max-width: 500px;
-      width: 100%;
-    }
-    .btn-custom {
-      background-color: #148791;
-      color: #fff;
-      border: none;
-      transition: background-color 0.3s ease;
-    }
-    .btn-custom:hover {
-      background-color: #0e5d5d;
-    }
-    .score {
-      font-size: 1.2rem;
-      font-weight: bold;
-    }
-  </style>
+  <link href="assets/css/style.css" rel="stylesheet">
 </head>
 <body>
   <div class="quiz-container text-center">
-    <h1 class="mb-4">Quiz App</h1>
+    <h1 class="mb-4 text-primary fw-bold">Quiz App</h1>
     <p id="question" class="mb-4">Loading question...</p>
     <div id="answers" class="d-grid gap-2 mb-4"></div>
     <p class="score">Score: <span id="score">0</span></p>
     <button id="next-btn" class="btn btn-custom" style="display: none;">Next Question</button>
   </div>
-
-  <script>
-    const questions = [
-      {
-        question: "What is the capital of France?",
-        options: ["Berlin", "Madrid", "Paris", "Rome"],
-        answer: "Paris",
-      },
-      {
-        question: "Which language runs in a web browser?",
-        options: ["Java", "C", "Python", "JavaScript"],
-        answer: "JavaScript",
-      },
-      {
-        question: "What does CSS stand for?",
-        options: ["Cascading Style Sheets", "Colorful Style Sheets", "Computer Style Sheets", "Creative Style Sheets"],
-        answer: "Cascading Style Sheets",
-      },
-    ];
-
-    let currentQuestionIndex = 0;
-    let score = 0;
-
-    const questionEl = document.getElementById("question");
-    const answersEl = document.getElementById("answers");
-    const scoreEl = document.getElementById("score");
-    const nextBtn = document.getElementById("next-btn");
-
-    function loadQuestion() {
-      const currentQuestion = questions[currentQuestionIndex];
-      questionEl.textContent = currentQuestion.question;
-
-      answersEl.innerHTML = "";
-      currentQuestion.options.forEach((option, index) => {
-        const button = document.createElement("button");
-        button.textContent = option;
-        button.classList.add("btn", "btn-outline-dark", "mb-2");
-        button.addEventListener("click", () => handleAnswer(option));
-        answersEl.appendChild(button);
-      });
-    }
-
-    function handleAnswer(selectedOption) {
-      const currentQuestion = questions[currentQuestionIndex];
-      const isCorrect = selectedOption === currentQuestion.answer;
-
-      if (isCorrect) {
-        score++;
-        scoreEl.textContent = score;
-      }
-
-      Array.from(answersEl.children).forEach((btn) => {
-        btn.disabled = true;
-        btn.classList.add(btn.textContent === currentQuestion.answer ? "btn-success" : "btn-danger");
-      });
-
-      nextBtn.style.display = "block";
-    }
-
-    nextBtn.addEventListener("click", () => {
-      currentQuestionIndex++;
-      if (currentQuestionIndex < questions.length) {
-        loadQuestion();
-        nextBtn.style.display = "none";
-      } else {
-        questionEl.textContent = "Quiz Completed!";
-        answersEl.innerHTML = "";
-        nextBtn.style.display = "none";
-      }
-    });
-
-    loadQuestion();
-  </script>
+  <script src="assets/js/main.js"></script>
 </body>
 </html>
